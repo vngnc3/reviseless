@@ -39,7 +39,6 @@ function calculate(a, baseFee, count, ceilRounding) {
     return sum;
   }
 
-  console.log(a, baseFee, count, ceilRounding);
   const totalResult = getTotalRate(1, count);
   return totalResult;
 }
