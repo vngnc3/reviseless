@@ -10,6 +10,21 @@
     max-width: 960px;
 }
 
+#tableContainer {
+  /* border: 1px salmon solid; */
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tableRow {
+  display: flex;
+}
+
+.tableItem {
+  min-width: 10rem;
+}
+
 input[type=range] {
     height: 23px;
     -webkit-appearance: none;

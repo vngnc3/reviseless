@@ -13,9 +13,17 @@ let baseFee = 150;
 let revisionCount = 4;
 
 function trigger() {
-  let totalResult = calculate(curveValue, baseFee, revisionCount, true);
+  // calculate() function from exponential.js returns an object.
+  // calculated.fees is an array of fees with arbitrary length set by the user.
+  // calculated.total is the sum of all fees.
+
+  let calculated = calculate(curveValue, baseFee, revisionCount, true);
   let previousValue = Number(output.innerHTML);
-  animateValue(output, previousValue, totalResult, 500);
+  let totalAllFees = calculated.total;
+  animateValue(output, previousValue, totalAllFees, 500);
+
+  // Call the table component update.
+  Table(calculated.fees);
 }
 
 function update() {
