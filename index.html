@@ -4,77 +4,115 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
 <html>
-
-<head>
+  <head>
     <!-- P r a x i s . -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>reviseless.</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
+  <body>
     <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->    
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
     <div id="appContainer">
-        <h1>revisi jangan banyak-banyak ntar mahal</h1></br>
-        <div>y = f&#40;x&#41; = <span id="curveValue">null</span><sup>x-1</sup></div>
-        <form id="form">
+      <div class="headerImage">
+        <img src="header.svg" />
+      </div>
+      <div>
+        y = f&#40;x&#41; = <span id="curveValue">null</span><sup>x-1</sup>
+      </div>
+      <form id="form">
+        <label for="curveInput">Curve</label><br />
+        <input
+          type="number"
+          id="curveInput"
+          name="curveInput"
+          placeholder="1.05"
+          min="1"
+          max="2"
+          step="0.01"
+          onchange="updateSlider()"
+        />
+        <br />
 
-            <label for="curveInput">Curve</label><br>
-            <input 
-                type="number" id="curveInput" name="curveInput" 
-                placeholder="1.05" 
-                min="1" max="2" step="0.01" onchange="updateSlider()">
-            <br />
+        <input
+          type="range"
+          id="curveSlider"
+          name="curveSlider"
+          min="1"
+          max="2"
+          step="0.01"
+          onchange="updateInput()"
+          oninput="updateInput()"
+        />
+        <span id="curveInputWarningSpan" class="inputWarning">&nbsp;</span>
+        <br />
+        <br />
 
-            <input type="range" id="curveSlider" name="curveSlider" 
-            min="1" max="2" step="0.01" onchange="updateInput()" oninput="updateInput()">
-            <span id="curveInputWarningSpan" class="inputWarning">&nbsp;</span>
-            <br />
-            <br />
+        <label for="baseRateInput">Base revision rate</label><br />
+        <input
+          type="number"
+          id="baseRateInput"
+          name="baseRateInput"
+          placeholder="150"
+          min="0"
+          onchange="updateBaseFee()"
+        />
+        <br />
 
-            <label for="baseRateInput">Base revision rate</label><br>
-            <input 
-                type="number" id="baseRateInput" name="baseRateInput" 
-                placeholder="150" 
-                min="0"
-                onchange="updateBaseFee()">
-            <br />
+        <label for="revisionCountInput">Number of revisions</label><br />
+        <input
+          type="number"
+          id="revisionCountInput"
+          name="revisionCountInput"
+          placeholder="4"
+          min="0"
+          max="255"
+          onchange="updateRevisionCount()"
+        />
+        <br />
 
-            <label for="revisionCountInput">Number of revisions</label><br>
-            <input 
-                type="number" id="revisionCountInput" name="revisionCountInput" 
-                placeholder="4" 
-                min="0" max="255"
-                onchange="updateRevisionCount()">
-            <br />
-
-            <div class="checkbox">
-            <input 
-                type="checkbox" 
-                id="useCurrency" 
-                name="useCurrency" 
-                onchange="update()">
-            <label for="useCurrency">Use IDR currency</label>
-            </div>
-            <br />
-
-        </form>
-        <div id="tableContainer">
-            "i am now become death, the destroyer of revisions"
+        <div class="checkbox">
+          <input
+            type="checkbox"
+            id="useCurrency"
+            name="useCurrency"
+            onchange="update()"
+          />
+          <label for="useCurrency">Use IDR currency</label>
         </div>
-        <div>
-            Total revision fees to charge: <span id="outputTotal">0</span>
-        </div>
+        <br />
+      </form>
+      <div id="tableContainer">
+        "i am now become death, the destroyer of revisions"
+      </div>
+      <div class="totalRevisionFees"><i>Total revision fees to charge</i> <span id="outputTotal">0</span></div>
+      <br />
+      <div class="footer">
+        Made with much hatred for endless revision limbo by
+        <a
+          href="https://xxxxizzy.xyz/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >izzy</a
+        >
+        and <a
+        href="https://bay.team/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Bay Team</a>.
+      </div>
     </div>
     <script src="curves/exponential.js" async></script>
     <script src="components/table.js" async></script>
     <script src="components/inputWarning.js" async></script>
     <script src="ui.js" async></script>
-</body>
-
+  </body>
 </html>
