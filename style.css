@@ -8,6 +8,17 @@
 #form {
     /* border: 1px red solid; */
     max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.inputWarning {
+  /* border: 1px black solid; */
+  color: red;
+  font-style: italic;
+  font-size: x-small;
+  text-align: right;
 }
 
 #tableContainer {
