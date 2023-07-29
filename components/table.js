@@ -2,11 +2,15 @@
 
 // Get the table container
 const tableContainer = document.querySelector("#tableContainer");
+const alternateColorClass = 'alternateRow';
 
-function addRow(revision, fee) {
+function addRow(revision, fee, alternate) {
   // Create a new row
   let row = document.createElement("div");
   row.className = "tableRow";
+  if (alternate == true) {
+    row.classList.add(alternateColorClass)
+  }
 
   // Create the revision cell
   let revisionCell = document.createElement("div");
@@ -26,7 +30,7 @@ function addRow(revision, fee) {
 }
 
 function initializeTable() {
-  return addRow("Revision #", "Fee");
+  return addRow("Revision #", "Fee", false);
 }
 
 function Table(data) {
@@ -43,7 +47,7 @@ function Table(data) {
   };
 
   function addRowAndAppend(value, index) {
-    appendToContainer(addRow(index+1, value))
+    appendToContainer(addRow(index+1, value, index % 2 == 0))
   };
 
   data.forEach(addRowAndAppend);
