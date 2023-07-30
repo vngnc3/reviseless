@@ -16,6 +16,7 @@ const curveInput = document.querySelector("#curveInput");
 const curveInputWarningSpan = document.querySelector("#curveInputWarningSpan");
 const baseRateInput = document.querySelector("#baseRateInput");
 const currencySelector = document.querySelector("#currency-select");
+const roundingCheckbox = document.querySelector("#enableRounding");
 const revisionCountInput = document.querySelector("#revisionCountInput");
 const output = document.querySelector("#outputTotal");
 
@@ -44,13 +45,16 @@ let curveValue = 1.05;
 let baseFee = 150;
 let revisionCount = 4;
 let selectedCurrency = "";
+let darkModeState = 0;
+let enableRoundingInt = 1;
+let enableRounding = true;
 
 function trigger() {
   // calculate() function from exponential.js returns an object.
   // calculated.fees is an array of fees with arbitrary length set by the user.
   // calculated.total is the sum of all fees.
 
-  let calculated = calculate(curveValue, baseFee, revisionCount, true);
+  let calculated = calculate(curveValue, baseFee, revisionCount, enableRounding);
   // let previousValue = Number(output.innerHTML); // Used for animated output values.
   let totalAllFees = Number(calculated.total);
 
@@ -156,4 +160,24 @@ function numberToCurrency(number) {
     style: "currency",
     currency: findRegionByCurrency(selectedCurrency).currency,
   }).format(number);
+}
+
+function toggleDarkMode() {
+  darkModeState = 1-darkModeState;
+  const switchIcon = document.querySelector('.darkSwitch');
+  const headerImage = document.querySelector('.headerImage');
+  switchIcon.classList.toggle('darkSwitched');
+  headerImage.classList.toggle('headerImageDark');
+  document.querySelector('body').classList.toggle('dark-mode');
+}
+
+function updateRoundingMode() {
+  // Simple boolean switch. Value set to true by default.
+  enableRoundingInt = 1 - enableRoundingInt;
+  if (enableRoundingInt === 1) {
+    enableRounding = true;
+  } else {
+    enableRounding = false;
+  }
+  update();
 }

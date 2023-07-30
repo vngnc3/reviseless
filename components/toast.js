@@ -4,7 +4,6 @@
 // Use a custom CSS to set the styling. toastStyle.css is available in /styles/
 
 function showToast(message, color, container, timeout) {
-    console.log('showToast triggered.');
   // Create the toast element.
   const toast = document.createElement("div");
 

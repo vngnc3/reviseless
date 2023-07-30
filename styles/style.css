@@ -1,8 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Poppins&display=swap");
 
+:root {
+  --color-background: #ffffff;
+  --color-text: #000000;
+  --color-link-hover: #000000;
+  --color-link-hover-text: whitesmoke;
+  --color-total-revision-fees: #000000;
+  --color-total-revision-fees-text: whitesmoke;
+  --color-footer: #808080;
+  --input-background: #f2f2f2;
+  --input-border: #000000;
+  --input-thumb: #000000;
+  --max-width: 690px;
+}
+
+body.dark-mode {
+  --color-background: #161616;
+  --color-text: #ffffff;
+  --color-link-hover: whitesmoke;
+  --color-link-hover-text: #000000;
+  --color-total-revision-fees: whitesmoke;
+  --color-total-revision-fees-text: #000000;
+  --color-footer: #ffffff;
+  --input-background: #333333;
+  --input-border: #ffffff;
+  --input-thumb: #ffffff;
+}
+
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: all 1s ease-in-out;
 }
 
 a {
@@ -13,8 +43,8 @@ a {
 }
 
 a:hover {
-  background-color: #000000;
-  color: whitesmoke;
+  background-color: var(--color-link-hover);
+  color: var(--color-link-hover-text);
 }
 
 #appContainer {
@@ -28,23 +58,58 @@ a:hover {
   padding-bottom: 4rem;
 }
 
+.darkSwitch {
+  /* border: 1px solid salmon; */
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  cursor: pointer;
+}
+
+.darkSwitch svg {
+  max-width: 100%;
+  max-height: 100%;
+  fill: black;
+  transition: all 1s ease-in-out;
+}
+
+.darkSwitched svg {
+  fill: whitesmoke;
+}
+
 .headerImage {
-  /* border: 1px salmon solid; */
   width: 100%;
   height: auto;
 }
 
-.headerImage img {
+.headerImage svg {
   max-width: 100%;
   max-height: 100%;
+  fill: black;
+  transition: all 1s ease-in-out;
+}
+
+.headerImageDark svg {
+  fill: whitesmoke;
 }
 
 #form {
   /* border: 1px red solid; */
-  max-width: 960px;
+  max-width: var(--max-width);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#form div {
+  /* border: 1px solid blue; */
+  display: flex;
+  align-items: center;
+}
+
+.spaceBetween {
+  justify-content: space-between;
 }
 
 .inputWarning {
@@ -55,7 +120,12 @@ a:hover {
   text-align: right;
 }
 
+.inputCheckbox {
+  user-select: none;
+}
+
 #currencySelector {
+  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   max-width: 10rem;
@@ -63,7 +133,7 @@ a:hover {
 
 #tableContainer {
   /* border: 1px salmon solid; */
-  max-width: 960px;
+  max-width: var(--max-width);
   display: flex;
   flex-direction: column;
   font-family: 'IBM Plex Mono', monospace;
@@ -72,6 +142,11 @@ a:hover {
 .tableRow {
   display: flex;
   padding: 0.1rem;
+  transition: all 1s ease-in-out;
+}
+
+.tableRowAlternate {
+  background-color: var(--input-background);
 }
 
 .tableItem {
@@ -79,21 +154,23 @@ a:hover {
 }
 
 .totalRevisionFees {
-  max-width: 960px;
-  color: whitesmoke;
-  background-color: #000000;
-  padding: 0.25rem;
-  border-radius: 5px;
+  max-width: var(--max-width);
+  color: var(--color-total-revision-fees-text);
+  background-color: var(--color-total-revision-fees);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: small;
   gap: 1rem;
+  transition: all 1s ease-in-out;
 }
 
 #outputTotal {
   font-family: 'IBM Plex Mono', monospace;
   font-weight: bold;
-  font-size: medium;
+  font-size: x-large;
 }
 
 .footerContainer {
@@ -103,10 +180,10 @@ a:hover {
 }
 
 .footer {
-  /* border: 1px solid brown; */
-  max-width: 50vw;
+  /* border: 1px solid blue; */
+  max-width: 64vw;
   margin-top: 4rem;
   font-size: x-small;
   text-align: center;
-  color: #808080;
+  color: var(--color-footer);
 }

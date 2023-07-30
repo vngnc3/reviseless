@@ -1,11 +1,13 @@
 // Generate table based on calculated data.
-const alternateBgColor = "#f0f0f0";
+
+const alternateRowClassName = 'tableRowAlternate';
+
 function addRow(revision, fee, alternate) {
   // Create a new row
   let row = document.createElement("div");
   row.className = "tableRow";
   if (alternate == true) {
-    row.style.backgroundColor = alternateBgColor;
+    row.classList.add(alternateRowClassName)
   }
 
   // Create the revision cell

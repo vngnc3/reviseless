@@ -12,6 +12,7 @@
     color: #fff;
     font-size: smaller;
     border-radius: 0.5rem;
+    filter: drop-shadow(0 1rem 0.75rem #3b3b3b2b);
     user-select: none;
     animation: toastFadeInOut forwards;
 }
