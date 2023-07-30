@@ -1,0 +1,36 @@
+#toastContainer {
+    /* border: 1px solid blue; */
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+.toast {
+    position: relative;
+    margin-top: 1rem;
+    padding: 1rem;
+    color: #fff;
+    font-size: smaller;
+    border-radius: 0.5rem;
+    user-select: none;
+    animation: toastFadeInOut forwards;
+}
+
+@keyframes toastFadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    5% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    95% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}

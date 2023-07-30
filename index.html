@@ -11,7 +11,10 @@
     <title>reviseless.</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/inputStyle.css" />
+    <link rel="stylesheet" href="styles/toastStyle.css" />
+    <link rel="stylesheet" href="styles/shake.css" />
   </head>
 
   <body>
@@ -22,61 +25,67 @@
       </p>
     <![endif]-->
     <div id="appContainer">
-      <div class="headerImage">
+      <div class="headerImage" >
         <img src="header.svg" />
       </div>
       <div>
         y = f&#40;x&#41; = <span id="curveValue">null</span><sup>x-1</sup>
       </div>
       <form id="form">
-        <label for="curveInput">Curve</label><br />
-        <input
-          type="number"
-          id="curveInput"
-          name="curveInput"
-          placeholder="1.05"
-          min="1"
-          max="2"
-          step="0.01"
-          onchange="updateSlider()"
-        />
+        <div id="curveFormContainer">
+          <label for="curveInput">Curve</label><br />
+          <input
+            type="number"
+            id="curveInput"
+            name="curveInput"
+            placeholder="1.05"
+            min="1"
+            max="2"
+            step="0.01"
+            onchange="updateSlider()"
+          />
+          <br />
+
+          <input
+            type="range"
+            id="curveSlider"
+            name="curveSlider"
+            min="1"
+            max="2"
+            step="0.01"
+            onchange="updateInput()"
+            oninput="updateInput()"
+          />
+          <span id="curveInputWarningSpan" class="inputWarning">&nbsp;</span>
+        </div>
+        <br />
         <br />
 
-        <input
-          type="range"
-          id="curveSlider"
-          name="curveSlider"
-          min="1"
-          max="2"
-          step="0.01"
-          onchange="updateInput()"
-          oninput="updateInput()"
-        />
-        <span id="curveInputWarningSpan" class="inputWarning">&nbsp;</span>
-        <br />
-        <br />
-
-        <label for="baseRateInput">Base revision rate</label><br />
-        <input
-          type="number"
-          id="baseRateInput"
-          name="baseRateInput"
-          placeholder="150"
-          min="0"
-          onchange="updateBaseFee()"
-        />
+        <div id="baseFeeFormContainer">
+          <label for="baseRateInput">Base revision rate</label><br />
+          <input
+            type="number"
+            id="baseRateInput"
+            name="baseRateInput"
+            placeholder="150"
+            min="0"
+            onchange="updateBaseFee()"
+          />
+        </div>
         <br />
 
-        <label for="revisionCountInput">Number of revisions</label><br />
-        <input
-          type="number"
-          id="revisionCountInput"
-          name="revisionCountInput"
-          placeholder="4"
-          min="0"
-          max="255"
-          onchange="updateRevisionCount()"
-        />
+        <div id="revisionCountFormContainer">
+          <label for="revisionCountInput">Number of revisions</label><br />
+          <input
+            type="number"
+            id="revisionCountInput"
+            name="revisionCountInput"
+            placeholder="4"
+            min="0"
+            max="255"
+            onchange="updateRevisionCount()"
+          />
+        </div>
         <br />
 
         <div class="checkbox">
@@ -110,11 +119,14 @@
             rel="noopener noreferrer"
             >Bay Team</a>.
         </div>
-    </div>
+      </div>
+      <div id="toastContainer"></div>
     </div>
     <script src="curves/exponential.js" async></script>
     <script src="components/table.js" async></script>
     <script src="components/inputWarning.js" async></script>
+    <script src="components/toast.js" async></script>
+    <script src="components/shake.js" async></script>
     <script src="ui.js" async></script>
   </body>
 </html>

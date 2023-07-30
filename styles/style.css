@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Poppins&display=swap");
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: inherit;
+  transition: all 300ms ease-in-out;
+}
+
+a:hover {
+  background-color: #000000;
+  color: whitesmoke;
+}
+
+#appContainer {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.headerImage {
+  /* border: 1px salmon solid; */
+  width: 100%;
+  height: auto;
+}
+
+.headerImage img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#form {
+  /* border: 1px red solid; */
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.inputWarning {
+  /* border: 1px black solid; */
+  color: red;
+  font-style: italic;
+  font-size: x-small;
+  text-align: right;
+}
+
+#tableContainer {
+  /* border: 1px salmon solid; */
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.tableRow {
+  display: flex;
+  padding: 0.1rem;
+}
+
+.tableItem {
+  min-width: 10rem;
+}
+
+.totalRevisionFees {
+  max-width: 960px;
+  color: whitesmoke;
+  background-color: #000000;
+  padding: 0.25rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  font-size: small;
+  gap: 1rem;
+}
+
+#outputTotal {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.footerContainer {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+}
+
+.footer {
+  /* border: 1px solid brown; */
+  max-width: 50vw;
+  margin-top: 4rem;
+  font-size: x-small;
+  text-align: center;
+  color: #808080;
+}
