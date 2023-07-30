@@ -15,7 +15,7 @@ const curveSlider = document.querySelector("#curveSlider");
 const curveInput = document.querySelector("#curveInput");
 const curveInputWarningSpan = document.querySelector("#curveInputWarningSpan");
 const baseRateInput = document.querySelector("#baseRateInput");
-const useCurrencyElement = document.querySelector("#useCurrency");
+const currencySelector = document.querySelector("#currency-select");
 const revisionCountInput = document.querySelector("#revisionCountInput");
 const output = document.querySelector("#outputTotal");
 
@@ -28,12 +28,22 @@ const toastContainer = document.querySelector("#toastContainer");
 // Initialize consts.
 const maxCurveInput = 2;
 const maxRevisionInput = 255;
+const supportedRegions = [
+  { region: 'id-ID', currency: 'IDR'},
+  { region: 'en-US', currency: 'USD'},
+  { region: 'de-DE', currency: 'EUR'},
+  { region: 'ja-JP', currency: 'JPY'},
+  { region: 'zh-CN', currency: 'CNY'},
+  { region: 'en-GB', currency: 'GBP'},
+  { region: 'en-GB', currency: 'SGD'},
+  { region: 'en-AU', currency: 'AUD'},
+];
 
 // Initialize variables.
 let curveValue = 1.05;
 let baseFee = 150;
 let revisionCount = 4;
-let useCurrency = false;
+let selectedCurrency = "";
 
 function trigger() {
   // calculate() function from exponential.js returns an object.
@@ -41,9 +51,10 @@ function trigger() {
   // calculated.total is the sum of all fees.
 
   let calculated = calculate(curveValue, baseFee, revisionCount, true);
-  let previousValue = Number(output.innerHTML);
+  // let previousValue = Number(output.innerHTML); // Used for animated output values.
   let totalAllFees = Number(calculated.total);
-  // output.textContent = totalAllFees;
+
+  const useCurrency = selectedCurrency != ''; // Returns true if currency is selected.
   output.textContent = useCurrency ? numberToCurrency(totalAllFees) : totalAllFees;
 
   // Call the table component update.
@@ -65,7 +76,7 @@ function update() {
   curveValue = Number(curveSlider.value);
   curveValueDisplay.innerHTML = curveValue;
   curveInputWarningSpan.textContent = CurveInputWarning(curveValue);
-  useCurrency = useCurrencyElement.checked
+  selectedCurrency = currencySelector.value;
   trigger();
 }
 
@@ -130,10 +141,19 @@ function isNumericDotComma(str) {
   return /^[\d.,]+$/.test(str);
 }
 
+function findRegionByCurrency(currency) {
+  // Use the find method to find the first object where the currency matches the input.
+  const region = supportedRegions.find(region => region.currency === currency);
+
+  // Return the found region, or null if no match was found.
+  return region || null;
+}
 
 function numberToCurrency(number) {
-  return new Intl.NumberFormat("id-ID", {
+  // @todo: create a new variable/function outside of this function to set the region and currency.
+  // such variable can be changed by a dropdown input in the page.
+  return new Intl.NumberFormat(findRegionByCurrency(selectedCurrency).region, {
     style: "currency",
-    currency: "IDR",
+    currency: findRegionByCurrency(selectedCurrency).currency,
   }).format(number);
 }

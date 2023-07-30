@@ -25,7 +25,7 @@
       </p>
     <![endif]-->
     <div id="appContainer">
-      <div class="headerImage" >
+      <div class="headerImage">
         <img src="header.svg" />
       </div>
       <div>
@@ -56,8 +56,8 @@
             onchange="updateInput()"
             oninput="updateInput()"
           />
-          <span id="curveInputWarningSpan" class="inputWarning">&nbsp;</span>
         </div>
+        <span id="curveInputWarningSpan" class="inputWarning">&nbsp;</span>
         <br />
         <br />
 
@@ -88,36 +88,43 @@
         </div>
         <br />
 
-        <div class="checkbox">
-          <input
-            type="checkbox"
-            id="useCurrency"
-            name="useCurrency"
-            onchange="update()"
-          />
-          <label for="useCurrency">Use IDR currency</label>
+        <div id="currencySelector">
+          <label for="currency-select">Use currency:</label>
+          <select name="currency" id="currency-select" onchange="update()">
+            <option value="">No currency selected.</option>
+            <option value="IDR">🇮🇩 IDR</option>
+            <option value="USD">🇺🇸 USD</option>
+            <option value="EUR">🇪🇺 EUR</option>
+            <option value="JPY">🇯🇵 JPY</option>
+            <option value="CNY">🇨🇳 RMB</option>
+            <option value="GBP">🇬🇧 GBP</option>
+            <option value="SGD">🇸🇬 SGD</option>
+            <option value="AUD">🇦🇺 AUD</option>
+          </select>
         </div>
         <br />
+        
       </form>
       <div id="tableContainer">
         "i am now become death, the destroyer of revisions"
       </div>
-      <div class="totalRevisionFees"><i>Total revision fees to charge</i> <span id="outputTotal">0</span></div>
+      <div class="totalRevisionFees">
+        <i>Total revision fees to charge</i> <span id="outputTotal">0</span>
+      </div>
       <br />
       <div class="footerContainer">
         <div class="footer">
-            Made with much hatred for endless revision limbo by
-            <a
+          Made with much hatred for endless revision limbo by
+          <a
             href="https://xxxxizzy.xyz/"
             target="_blank"
             rel="noopener noreferrer"
             >izzy</a
-            >
-            and <a
-            href="https://bay.team/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Bay Team</a>.
+          >
+          and
+          <a href="https://bay.team/" target="_blank" rel="noopener noreferrer"
+            >Bay Team</a
+          >.
         </div>
       </div>
       <div id="toastContainer"></div>

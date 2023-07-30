@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Poppins&display=swap");
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 a {
   text-decoration: none;
   font-weight: bold;
@@ -17,7 +22,10 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 1rem;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .headerImage {
@@ -36,7 +44,7 @@ a:hover {
   max-width: 960px;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.5rem;
 }
 
 .inputWarning {
@@ -45,6 +53,12 @@ a:hover {
   font-style: italic;
   font-size: x-small;
   text-align: right;
+}
+
+#currencySelector {
+  display: flex;
+  flex-direction: column;
+  max-width: 10rem;
 }
 
 #tableContainer {
