@@ -11,6 +11,7 @@
     <title>reviseless.</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="lib/Chart.min-2.5.0.js"></script>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/inputStyle.css" />
     <link rel="stylesheet" href="styles/toastStyle.css" />
@@ -100,6 +101,9 @@
             </clipPath>
           </defs>
         </svg>
+      </div>
+      <div class="chartContainer">
+        <canvas id="curveChart" class="chart"></canvas>
       </div>
       <div>
         y = f&#40;x&#41; = <span id="curveValue">1.05</span><sup>x-1</sup>
@@ -262,6 +266,7 @@
       <div id="toastContainer"></div>
     </div>
     <script src="curves/exponential.js" defer></script>
+    <script src="components/generateChart.js" defer></script>
     <script src="components/storage.js" defer></script>
     <script src="components/table.js" defer></script>
     <script src="components/inputWarning.js" defer></script>

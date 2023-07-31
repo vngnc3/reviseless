@@ -15,6 +15,8 @@
 // 6. storeData() and retrieveData() functions from storage.js to store and retrieve data from localStorage.
 //    storage.js handles HTML5 storage support (or lack thereof).
 // 7. downloadCsv() function from downloadCsv.js to download the table data as CSV file.
+// 8. generateChartWithConfig() function from generateChart.js to generate chart in a prepared canvas.
+//    generateChart.js requires Chart.js included in /lib/ directory.
 
 // Define all input & output elements.
 const curveValueDisplay = document.querySelector("#curveValue");
@@ -35,7 +37,7 @@ const toastContainer = document.querySelector("#toastContainer");
 
 // Initialize consts.
 const maxCurveInput = 2;
-const maxRevisionInput = 255;
+const maxRevisionInput = 128;
 const supportedRegions = [
   { region: "id-ID", currency: "IDR" },
   { region: "en-US", currency: "USD" },
@@ -60,17 +62,17 @@ let tableDataAsCsvString = "";
 // Trigger calculation and update the DOM.
 // Uses update() -> trigger() processing pattern.
 function trigger() {
+
   // calculate() function from exponential.js returns an object.
   // calculated.fees is an array of fees with arbitrary length set by the user.
   // calculated.total is the sum of all fees.
-
   let calculated = calculate(
     curveValue,
     baseFee,
     revisionCount,
     enableRounding
   );
-  // let previousValue = Number(output.innerHTML); // Used for animated output values.
+
   let totalAllFees = Number(calculated.total);
 
   const useCurrency = selectedCurrency != ""; // Returns true if currency is selected.
@@ -97,9 +99,11 @@ function trigger() {
 
 function update() {
   // Updates the UI display based on curveSlider's value.
+  // Updates the chart through generateChartWithConfig() function.
   curveValue = Number(curveSlider.value);
   curveValueDisplay.innerHTML = curveValue;
   curveInputWarningSpan.textContent = CurveInputWarning(curveValue);
+  generateChartWithConfig(baseFee, curveValue, revisionCount);
   trigger();
 }
 
