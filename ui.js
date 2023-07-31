@@ -8,6 +8,12 @@
 //    It takes an array of fees and doesn't return anything.
 // 3. CurveInputWarning() function from warnings.js: This function generates a warning message 
 //    based on the curveValue. It takes the curveValue as a parameter and returns a string message.
+// 4. showToast() function from toast.js to show notification toasts. Accepts message, color, container, and timeout as arguments.
+//    Returns nothing and append generated toast element to the container div.
+// 5. applyShakeAnimation() function fromn shake.js to apply shake animation on a selected element.
+//    Accepts HTML element and duration in ms as arguments.
+// 6. storeData() and retrieveData() functions from storage.js to store and retrieve data from localStorage.
+//    storage.js handles HTML5 storage support (or lack thereof).
 
 // Define all input & output elements.
 const curveValueDisplay = document.querySelector("#curveValue");
@@ -44,11 +50,14 @@ const supportedRegions = [
 let curveValue = 1.05;
 let baseFee = 150;
 let revisionCount = 4;
-let selectedCurrency = "";
-let darkModeState = 0;
+let selectedCurrency = retrieveData('selectedCurrency', '');
+let darkModeState = Number(retrieveData('darkModeState', 0));
 let enableRoundingInt = 1;
 let enableRounding = true;
 
+
+// Trigger calculation and update the DOM.
+// Uses update() -> trigger() processing pattern.
 function trigger() {
   // calculate() function from exponential.js returns an object.
   // calculated.fees is an array of fees with arbitrary length set by the user.
@@ -80,10 +89,12 @@ function update() {
   curveValue = Number(curveSlider.value);
   curveValueDisplay.innerHTML = curveValue;
   curveInputWarningSpan.textContent = CurveInputWarning(curveValue);
-  selectedCurrency = currencySelector.value;
   trigger();
 }
 
+
+// Update the corresponding input controls based on other inputs.
+// updateSlider, updateInput, updateBaseFee, updateRevisionCount.
 function updateSlider() {
   // Updates curveSlider value based on curveInput's value.
   // And then call the update() fn.
@@ -137,6 +148,9 @@ function updateRevisionCount() {
   }
 }
 
+
+// Check functions. isNumeric, isNumericDotComma
+// Use with number-sensitive values.
 function isNumeric(str) {
   return /^\d+$/.test(str);
 }
@@ -145,6 +159,9 @@ function isNumericDotComma(str) {
   return /^[\d.,]+$/.test(str);
 }
 
+
+// Currency-related functions.
+// Finding region, converting number to currency formatted string.
 function findRegionByCurrency(currency) {
   // Use the find method to find the first object where the currency matches the input.
   const region = supportedRegions.find(region => region.currency === currency);
@@ -162,13 +179,15 @@ function numberToCurrency(number) {
   }).format(number);
 }
 
-function toggleDarkMode() {
-  darkModeState = 1-darkModeState;
-  const switchIcon = document.querySelector('.darkSwitch');
-  const headerImage = document.querySelector('.headerImage');
-  switchIcon.classList.toggle('darkSwitched');
-  headerImage.classList.toggle('headerImageDark');
-  document.querySelector('body').classList.toggle('dark-mode');
+function setCurrencyTo(currencyString) {
+  currencySelector.value = currencyString;
+  selectedCurrency = currencySelector.value;
+}
+
+function updateCurrency() {
+  selectedCurrency = currencySelector.value;
+  storeData('selectedCurrency', selectedCurrency);
+  update();
 }
 
 function updateRoundingMode() {
@@ -181,3 +200,30 @@ function updateRoundingMode() {
   }
   update();
 }
+
+
+// Dark mode settings.
+// Setting it, getting value from storage, etc.
+function setDarkMode() {
+  const switchIcon = document.querySelector('.darkSwitch');
+  const headerImage = document.querySelector('.headerImage');
+  if (darkModeState === 1) {
+    switchIcon.classList.add('darkSwitched');
+    headerImage.classList.add('headerImageDark');
+    document.querySelector('body').classList.add('dark-mode');
+  } else {
+    switchIcon.classList.remove('darkSwitched');
+    headerImage.classList.remove('headerImageDark');
+    document.querySelector('body').classList.remove('dark-mode');
+  }
+}
+
+function toggleDarkMode() {
+  darkModeState = 1-darkModeState;
+  storeData('darkModeState', darkModeState);
+  setDarkMode();
+  darkModeState = Number(retrieveData('darkModeState', 0));
+}
+
+setDarkMode();
+setCurrencyTo(retrieveData('selectedCurrency', ''));

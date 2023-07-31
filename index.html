@@ -160,7 +160,7 @@
 
         <label for="currency-select">Use currency:</label>
         <div id="currencySelector">
-          <select name="currency" id="currency-select" onchange="update()">
+          <select name="currency" id="currency-select" onchange="updateCurrency()">
             <option value="">No currency selected.</option>
             <option value="IDR">🇮🇩 IDR</option>
             <option value="USD">🇺🇸 USD</option>
@@ -239,11 +239,12 @@
       </div>
       <div id="toastContainer"></div>
     </div>
-    <script src="curves/exponential.js" async></script>
-    <script src="components/table.js" async></script>
-    <script src="components/inputWarning.js" async></script>
-    <script src="components/toast.js" async></script>
-    <script src="components/shake.js" async></script>
-    <script src="ui.js" async></script>
+    <script src="curves/exponential.js" defer></script>
+    <script src="components/storage.js" defer></script>
+    <script src="components/table.js" defer></script>
+    <script src="components/inputWarning.js" defer></script>
+    <script src="components/toast.js" defer></script>
+    <script src="components/shake.js" defer></script>
+    <script src="ui.js" defer></script>
   </body>
 </html>
