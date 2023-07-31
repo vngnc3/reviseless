@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/inputStyle.css" />
     <link rel="stylesheet" href="styles/toastStyle.css" />
+    <link rel="stylesheet" href="styles/noticeStyle.css" />
   </head>
 
   <body>
@@ -105,7 +106,10 @@
       </div>
       <form id="form">
         <div id="curveFormContainer" class="spaceBetween">
-          <label for="curveInput">Curve</label><br />
+          <div>
+            <label for="curveInput">Curve</label><br />
+            <img src="images/help.svg" onclick="showNotice(curveInfo)" />
+          </div>
           <input
             type="number"
             id="curveInput"
@@ -132,7 +136,10 @@
         <br />
 
         <div id="baseFeeFormContainer" class="spaceBetween">
-          <label for="baseRateInput">Base revision rate</label><br />
+          <div>
+            <label for="baseRateInput">Base revision rate</label><br />
+            <img src="images/help.svg" onclick="showNotice(baseFeeInfo)" />
+          </div>
           <input
             type="number"
             id="baseRateInput"
@@ -145,7 +152,10 @@
         <br />
 
         <div id="revisionCountFormContainer" class="spaceBetween">
-          <label for="revisionCountInput">Number of revisions</label><br />
+          <div>
+            <label for="revisionCountInput">Number of revisions</label><br />
+            <img src="images/help.svg" onclick="showNotice(revisionCountInfo)" />
+          </div>
           <input
             type="number"
             id="revisionCountInput"
@@ -158,7 +168,10 @@
         </div>
         <br />
 
-        <label for="currency-select">Use currency:</label>
+        <div>
+          <label for="currency-select">Use currency:</label>
+          <img src="images/help.svg" onclick="showNotice(useCurrencyInfo)" />
+        </div>
         <div id="currencySelector">
           <select name="currency" id="currency-select" onchange="updateCurrency()">
             <option value="">No currency selected.</option>
@@ -183,7 +196,10 @@
             autocomplete="off"
             onchange="updateRoundingMode()"
           />
-          <label for="enableRounding">Enable rounding</label>
+          <div>
+            <label for="enableRounding">Enable rounding</label>
+            <img src="images/help.svg" onclick="showNotice(enableRoundingInfo)" />
+          </div>
         </div>
         <br />
       </form>
@@ -243,6 +259,7 @@
     <script src="components/storage.js" defer></script>
     <script src="components/table.js" defer></script>
     <script src="components/inputWarning.js" defer></script>
+    <script src="components/notice.js" defer></script>
     <script src="components/toast.js" defer></script>
     <script src="components/shake.js" defer></script>
     <script src="ui.js" defer></script>

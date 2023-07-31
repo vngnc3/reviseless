@@ -225,5 +225,8 @@ function toggleDarkMode() {
   darkModeState = Number(retrieveData('darkModeState', 0));
 }
 
+
+// Initialization functions.
+// Runs when document loaded.
 setDarkMode();
 setCurrencyTo(retrieveData('selectedCurrency', ''));

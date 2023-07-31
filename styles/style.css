@@ -11,6 +11,7 @@
   --input-background: #f2f2f2;
   --input-border: #000000;
   --input-thumb: #000000;
+  --notice-background: #e2e2e2ee;
   --max-width: 690px;
 }
 
@@ -25,6 +26,7 @@ body.dark-mode {
   --input-background: #333333;
   --input-border: #ffffff;
   --input-thumb: #ffffff;
+  --notice-background: #202020ee;
 }
 
 body {
@@ -60,8 +62,8 @@ a:hover {
 
 .darkSwitch {
   /* border: 1px solid salmon; */
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   display: flex;
   cursor: pointer;
 }
@@ -106,6 +108,13 @@ a:hover {
   /* border: 1px solid blue; */
   display: flex;
   align-items: center;
+}
+
+#form img {
+  width: 1rem;
+  height: auto;
+  margin-left: 0.5rem;
+  cursor: pointer;
 }
 
 .spaceBetween {
