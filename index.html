@@ -209,6 +209,12 @@
       <div class="totalRevisionFees">
         <i>Total revision fees to charge</i> <span id="outputTotal">0</span>
       </div>
+      <div class="downloadButton">
+        <div class="downloadButtonInteract" onclick="downloadTable()">
+          <span>Download as CSV</span>
+          <img src="images/download.svg" />
+        </div>
+      </div>
       <br />
       <div class="footerContainer">
         <div class="footer">
@@ -262,6 +268,7 @@
     <script src="components/notice.js" defer></script>
     <script src="components/toast.js" defer></script>
     <script src="components/shake.js" defer></script>
+    <script src="components/downloadCsv.js" defer></script>
     <script src="ui.js" defer></script>
   </body>
 </html>

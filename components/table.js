@@ -1,4 +1,6 @@
 // Generate table based on calculated data.
+// Use tableDataAsCsvString defined in ui.js to store data.
+// New line is defined by \n character.
 
 const alternateRowClassName = 'tableRowAlternate';
 
@@ -24,6 +26,9 @@ function addRow(revision, fee, alternate) {
   row.appendChild(revisionCell);
   row.appendChild(feeCell);
 
+  // Add the row to CSV string
+  addLineToCsvString(revision, fee);
+
   return row;
 }
 
@@ -37,6 +42,7 @@ function Table(data, tableContainer) {
   // Use the index+1 and the actual fees.
   // Returns HTML code to visualize data as HTML flex divs.
 
+  clearCsvString();
   tableContainer.textContent = "";
   tableContainer.appendChild(initializeTable());
 

@@ -182,6 +182,27 @@ a:hover {
   font-size: x-large;
 }
 
+.downloadButton {
+  /* border: 1px solid blue; */
+  max-width: var(--max-width);
+  margin-top: -1.5rem;
+  font-size: x-small;
+  font-style: italic;
+  color: #808080;
+  display: flex;
+  justify-content: end;
+  gap: 0.3rem;
+}
+
+.downloadButtonInteract {
+  cursor: pointer;
+}
+
+.downloadButton img {
+  width: 0.8rem;
+  height: auto;
+}
+
 .footerContainer {
   /* border: 1px solid red; */
   display: flex;
