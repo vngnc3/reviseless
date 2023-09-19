@@ -239,13 +239,19 @@ function setDarkMode() {
   const switchIcon = document.querySelector(".darkSwitch");
   const headerImage = document.querySelector(".headerImage");
   if (darkModeState === 1) {
-    switchIcon.classList.add("darkSwitched");
     headerImage.classList.add("headerImageDark");
     document.querySelector("body").classList.add("dark-mode");
+    switchIcon.classList.add("darkSwitched");
+    setTimeout(() => {
+      switchIcon.textContent = 'dark_mode';
+    }, 500)
   } else {
-    switchIcon.classList.remove("darkSwitched");
-    headerImage.classList.remove("headerImageDark");
     document.querySelector("body").classList.remove("dark-mode");
+    headerImage.classList.remove("headerImageDark");
+    switchIcon.classList.remove("darkSwitched");
+    setTimeout(() => {
+      switchIcon.textContent = 'light_mode';
+    }, 500)
   }
 }
 
@@ -281,7 +287,15 @@ function clearCsvString() {
   tableDataAsCsvString = "";
 }
 
+// Show-hide formula toggle.
+function toggleFormula(element) {
+  const formula = element.nextElementSibling;
+  formula.classList.toggle('hiddenFormula');
+  element.textContent = formula.classList.contains('hiddenFormula') ? 'Show formula' : 'Hide formula';
+}
+
 // Initialization functions.
 // Runs when document loaded.
 setDarkMode();
 setCurrencyTo(retrieveData("selectedCurrency", ""));
+update();

@@ -25,7 +25,8 @@ let myChart = new Chart(canvasId, {
       text: "",
       fontSize: 10,
     },
-    aspectRatio: 1.33,
+    aspectRatio: 1,
+    maintainAspectRatio: false,
   },
 });
 

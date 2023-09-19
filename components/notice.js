@@ -110,13 +110,13 @@ const donationInfo = {
             href="https://saweria.co/izzy/"
             target="_blank"
             rel="noopener noreferrer">
-                🔗 Local/Indonesian Rupiah
+                🔗 🇮🇩 IDR
         </a><br />
         <a
             href="https://etherscan.io/address/0x37b7458c5f14822bf423965aed077a20269011c5"
             target="_blank"
             rel="noopener noreferrer">
-                🔗 👽Ethereum Mainnet/ETH
+                🔗 🔮 ETH
         </a><br />
     `,
 };

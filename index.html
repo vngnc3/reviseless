@@ -20,7 +20,7 @@
     />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    
+
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://reviseless-464bf.web.app/" />
     <meta property="og:type" content="website" />
@@ -87,28 +87,11 @@
       </p>
     <![endif]-->
     <div id="appContainer">
-      <div class="darkSwitch" onclick="toggleDarkMode()">
-        <svg
-          width="128"
-          height="128"
-          viewBox="0 0 128 128"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g clip-path="url(#clip0_246_20)">
-            <path
-              d="M111.776 81.7333C112.864 79.1413 109.755 76.9333 107.147 78.0853C101.934 80.3736 96.3011 81.5506 90.608 81.5413C68.288 81.5413 50.1973 63.8133 50.1973 41.9413C50.1892 34.5565 52.2872 27.3225 56.2453 21.088C57.76 18.6987 55.9413 15.392 53.168 16.096C31.7867 21.552 16 40.6027 16 63.264C16 90.1813 38.2667 112 65.7387 112C86.5387 112 104.352 99.4933 111.776 81.7333Z"
-            />
-            <path
-              d="M83.2587 16.5493C80.432 14.6613 77.0613 18.032 78.944 20.8587L82.304 25.8987C83.667 27.9422 84.3944 30.3436 84.3944 32.8C84.3944 35.2564 83.667 37.6578 82.304 39.7013L78.944 44.7413C77.0613 47.568 80.4373 50.9387 83.264 49.0507L88.2987 45.6907C90.3422 44.3276 92.7436 43.6003 95.2 43.6003C97.6564 43.6003 100.058 44.3276 102.101 45.6907L107.141 49.0507C109.968 50.9387 113.339 47.568 111.451 44.7413L108.091 39.7013C106.728 37.6578 106 35.2564 106 32.8C106 30.3436 106.728 27.9422 108.091 25.8987L111.451 20.8587C113.339 18.032 109.968 14.6613 107.136 16.5493L102.101 19.9093C100.058 21.2724 97.6564 21.9997 95.2 21.9997C92.7436 21.9997 90.3422 21.2724 88.2987 19.9093L83.2587 16.5493Z"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_246_20">
-              <rect width="128" height="128" fill="white" />
-            </clipPath>
-          </defs>
-        </svg>
+      <div
+        class="darkSwitch material-symbols-outlined"
+        onclick="toggleDarkMode()"
+      >
+        dark_mode
       </div>
       <div class="headerImage">
         <svg
@@ -166,8 +149,13 @@
       <div class="chartContainer">
         <canvas id="curveChart" class="chart"></canvas>
       </div>
-      <div>
-        y = f&#40;x&#41; = <span id="curveValue">1.05</span><sup>x-1</sup>
+      <div class="formulaContainer">
+        <div class="formulaButton" onclick="toggleFormula(this)">
+          Show formula
+        </div>
+        <div class="formula hiddenFormula">
+          y = f&#40;x&#41; = <span id="curveValue">1.05</span><sup>x-1</sup>
+        </div>
       </div>
       <form id="form">
         <div id="curveFormContainer" class="spaceBetween">
