@@ -291,7 +291,7 @@ function clearCsvString() {
 function toggleFormula(element) {
   const formula = element.nextElementSibling;
   formula.classList.toggle('hiddenFormula');
-  element.textContent = formula.classList.contains('hiddenFormula') ? 'Show formula' : 'Hide formula';
+  element.textContent = formula.classList.contains('hiddenFormula') ? 'Show function' : 'Hide function';
 }
 
 // Initialization functions.
