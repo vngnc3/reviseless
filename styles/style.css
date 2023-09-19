@@ -62,14 +62,6 @@ body {
   padding-bottom: 4rem;
 }
 
-@media (min-width: 1024px) {
-  #appContainer {
-    margin-left: calc(50vw - var(--max-width) / 2);
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
 a {
   text-decoration: none;
   color: inherit;
@@ -146,12 +138,14 @@ a:hover {
   align-items: center;
 }
 
-#form img {
+form img {
   width: 1rem;
   height: auto;
   margin-left: 0.5rem;
   cursor: pointer;
 }
+
+
 
 .spaceBetween {
   justify-content: space-between;
@@ -169,11 +163,86 @@ a:hover {
   user-select: none;
 }
 
+input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #ffffff00;
+  /* Not removed via appearance */
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.25em;
+  margin-right: 0.5rem;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.55em;
+  height: 0.55em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  border-radius: 0.05em;
+  box-shadow: inset 1em 1em currentColor;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+select {
+  /* // A reset of styles, including removing the default dropdown arrow */
+  appearance: none;
+  /* // Additional resets for further consistency */
+  background-color: transparent;
+  border: none;
+  padding: 0 1rem 0 0;
+  margin: 0;
+  width: 100%;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;  
+  transition: all 1s ease-in-out;
+}
+
+.selectContainer {
+  width: 100%;
+  min-width: 8ch;
+  max-width: 12ch;
+  border: 1px solid var(--color-footer);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: var(--color-background);
+  background-image: linear-gradient(to top, var(--color-background), var(--faded-fill), 33%);
+  transition: all 1s ease-in-out;
+}
+
+.selectContainer::after {
+  content: "";
+  width: 0.8em;
+  height: 0.5em;
+  background-color: var(--color-text);
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  transition: all 1s ease-in-out;
+}
+
 #currencySelector {
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
-  max-width: 10rem;
+  /* max-width: 10rem; */
 }
 
 #tableContainer {
@@ -279,27 +348,28 @@ a:hover {
 }
 
 .footerContainer {
-  /* border: 1px solid red; */
+  margin-top: 4rem;
+  margin-bottom: 3.2rem;
   max-width: var(--max-width);
   display: flex;
   justify-content: center;
+  /* border: 1px solid red; */
 }
 
 .footer {
-  /* border: 1px solid blue; */
   width: 100%;
-  margin-top: 4rem;
+  height: 3rem;
+  font-size: small;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: x-small;
   color: var(--color-footer);
+  /* border: 1px solid blue; */
 }
 
 .footerLeft {
-  font-size: small;
-  display: flex;
-  gap: 2rem;
+  display: block;
   /* border: 1px solid red; */
 }
 
@@ -308,4 +378,20 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+/* Larger screen breakpoint */
+@media (min-width: 1024px) {
+  #appContainer {
+    margin-left: calc(50vw - var(--max-width) / 2);
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .footerLeft {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    /* border: 1px solid blue; */
+  }
 }

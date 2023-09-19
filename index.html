@@ -228,22 +228,24 @@
           <label for="currency-select">Use currency:</label>
           <img src="images/help.svg" onclick="showNotice(useCurrencyInfo)" />
         </div>
-        <div id="currencySelector">
-          <select
-            name="currency"
-            id="currency-select"
-            onchange="updateCurrency()"
-          >
-            <option value="">No currency selected.</option>
-            <option value="IDR">🇮🇩 IDR</option>
-            <option value="USD">🇺🇸 USD</option>
-            <option value="EUR">🇪🇺 EUR</option>
-            <option value="JPY">🇯🇵 JPY</option>
-            <option value="CNY">🇨🇳 RMB</option>
-            <option value="GBP">🇬🇧 GBP</option>
-            <option value="SGD">🇸🇬 SGD</option>
-            <option value="AUD">🇦🇺 AUD</option>
-          </select>
+        <div class="selectContainer">
+          <div id="currencySelector">
+            <select
+              name="currency"
+              id="currency-select"
+              onchange="updateCurrency()"
+            >
+              <option value="">No currency selected.</option>
+              <option value="IDR">🇮🇩 IDR</option>
+              <option value="USD">🇺🇸 USD</option>
+              <option value="EUR">🇪🇺 EUR</option>
+              <option value="JPY">🇯🇵 JPY</option>
+              <option value="CNY">🇨🇳 RMB</option>
+              <option value="GBP">🇬🇧 GBP</option>
+              <option value="SGD">🇸🇬 SGD</option>
+              <option value="AUD">🇦🇺 AUD</option>
+            </select>
+          </div>
         </div>
         <br />
 
@@ -257,7 +259,9 @@
             onchange="updateRoundingMode()"
           />
           <div>
-            <label for="enableRounding">Enable rounding</label>
+            <label for="enableRounding" style="cursor: pointer"
+              >Enable rounding</label
+            >
             <img
               src="images/help.svg"
               onclick="showNotice(enableRoundingInfo)"
@@ -300,16 +304,15 @@
           </div>
           <br />
           <div class="footerRight">
-            <div>Made with much hatred for revision limbo ❤️‍🩹<br /></div>
             <div>
-              by
+              Designed by
               <a
-                href="https://xxxxizzy.xyz/"
+                href="https://vngnc.xyz/"
                 target="_blank"
                 rel="noopener noreferrer"
                 >izzy</a
               >
-              and
+              @
               <a
                 href="https://bay.team/"
                 target="_blank"
