@@ -10,11 +10,11 @@
     background-color: var(--notice-background);
     user-select: none;
     z-index: 100;
+    backdrop-filter: blur(0.25rem);
+    -webkit-backdrop-filter: blur(0.25rem);
 }
 
 .notice {
-    /* background-color: salmon; */
-    /* border: 1px solid blue; */
     padding: 1rem;
     min-width: 65%;
     max-width: 80%;

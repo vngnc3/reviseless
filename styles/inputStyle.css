@@ -115,3 +115,40 @@ input[type="range"]:focus::-ms-fill-lower {
 input[type="range"]:focus::-ms-fill-upper {
   background: var(--input-background);
 }
+.inputCheckbox {
+  user-select: none;
+}
+
+input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #ffffff00;
+  /* Not removed via appearance */
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.25em;
+  margin-right: 0.5rem;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.55em;
+  height: 0.55em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  border-radius: 0.05em;
+  box-shadow: inset 1em 1em currentColor;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}

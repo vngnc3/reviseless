@@ -159,44 +159,6 @@ form img {
   text-align: right;
 }
 
-.inputCheckbox {
-  user-select: none;
-}
-
-input[type="checkbox"] {
-  /* Add if not using autoprefixer */
-  -webkit-appearance: none;
-  appearance: none;
-  /* For iOS < 15 to remove gradient background */
-  background-color: #ffffff00;
-  /* Not removed via appearance */
-  margin: 0;
-  font: inherit;
-  color: currentColor;
-  width: 1.15em;
-  height: 1.15em;
-  border: 0.15em solid currentColor;
-  border-radius: 0.25em;
-  margin-right: 0.5rem;
-  display: grid;
-  place-content: center;
-  cursor: pointer;
-}
-
-input[type="checkbox"]::before {
-  content: "";
-  width: 0.55em;
-  height: 0.55em;
-  transform: scale(0);
-  transition: 120ms transform ease-in-out;
-  border-radius: 0.05em;
-  box-shadow: inset 1em 1em currentColor;
-}
-
-input[type="checkbox"]:checked::before {
-  transform: scale(1);
-}
-
 select {
   /* // A reset of styles, including removing the default dropdown arrow */
   appearance: none;
@@ -310,12 +272,14 @@ select {
   max-width: var(--max-width);
   color: var(--color-total-revision-fees-text);
   background-color: var(--color-total-revision-fees);
-  padding: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
   border-radius: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: small;
+  /* font size in small screen */
+  font-size: 0.7rem; 
   gap: 1rem;
   transition: all 1s ease-in-out;
 }
@@ -387,11 +351,14 @@ select {
     padding-left: 0;
     padding-right: 0;
   }
+
+  .totalRevisionFees {
+    font-size: 0.8rem;
+  }
   
   .footerLeft {
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    /* border: 1px solid blue; */
   }
 }
