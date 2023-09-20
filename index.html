@@ -216,7 +216,7 @@
             type="number"
             id="revisionCountInput"
             name="revisionCountInput"
-            placeholder="4"
+            placeholder="10"
             min="0"
             max="255"
             onchange="updateRevisionCount()"
@@ -273,13 +273,39 @@
       <div id="tableContainer">
         "i am now become death, the destroyer of revisions"
       </div>
-      <div class="totalRevisionFees">
-        <i>Total revision fees to charge</i> <span id="outputTotal">0</span>
+      <div class="totalRevisionContainer">
+        <div class="totalRevisionFees">
+          <i>Total revision fees to charge</i> <span id="outputTotal">0</span>
+        </div>
+        <div class="feeDifference">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 0.25rem;
+              font-style: italic;
+              opacity: 0.3;
+            "
+          >
+            <span class="differenceLabel">Difference to flat pricing</span>
+            <img
+              src="images/help.svg"
+              style="height: 1rem; cursor: pointer;"
+              onclick="showNotice(differenceInfo)"
+            />
+          </div>
+          <div class="totalFeeDifference">
+            +<span id="amountDifference" style="font-weight: bold">0</span
+            >&nbsp;&nbsp; +<span id="percentDifference">0%</span>
+          </div>
+        </div>
       </div>
       <div class="downloadButton">
         <div class="downloadButtonInteract" onclick="downloadTable()">
-          <span>Download as CSV</span>
-          <img src="images/download.svg" />
+          Download sheet
+          <span class="material-symbols-outlined downloadIcon">
+            sim_card_download
+          </span>
         </div>
       </div>
       <br />

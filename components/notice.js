@@ -120,3 +120,10 @@ const donationInfo = {
         </a><br />
     `,
 };
+
+const differenceInfo = {
+  title: "Difference to linear pricing",
+  message: `
+        Calculated total fee difference between curved pricing (fee gets more expensive with more revisions) and flat revision fee.
+    `,
+};

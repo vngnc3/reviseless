@@ -16,14 +16,16 @@
 
 .notice {
     padding: 1rem;
-    min-width: 65%;
-    max-width: 80%;
+    width: 67%;
+    max-width: calc(var(--max-width)*0.67);
     max-height: 90%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: left;
+    text-align: left;
+    gap: 0.5rem;
     font-family: "Poppins", sans-serif;
+    /* border: 1px solid red; */
 }
 
 .dismissNote {

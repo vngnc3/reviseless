@@ -28,6 +28,8 @@ const currencySelector = document.querySelector("#currency-select");
 const roundingCheckbox = document.querySelector("#enableRounding");
 const revisionCountInput = document.querySelector("#revisionCountInput");
 const output = document.querySelector("#outputTotal");
+const amountDifference = document.querySelector("#amountDifference");
+const percentDifference = document.querySelector("#percentDifference");
 
 // Define Table() elements to be passed down to table.js
 const tableContainerElement = document.querySelector("#tableContainer");
@@ -52,7 +54,7 @@ const supportedRegions = [
 // Initialize variables.
 let curveValue = 1.05;
 let baseFee = 150;
-let revisionCount = 4;
+let revisionCount = 10;
 let selectedCurrency = retrieveData("selectedCurrency", "");
 let darkModeState = Number(retrieveData("darkModeState", 0));
 let enableRoundingInt = 1;
@@ -73,12 +75,20 @@ function trigger() {
     enableRounding
   );
 
+  let linearCalculated = calculate(
+    1, baseFee, revisionCount, enableRounding
+  );
+
   let totalAllFees = Number(calculated.total);
+  let totalLinearFees = Number(linearCalculated.total);
+  let totalFeeDifference = totalAllFees - totalLinearFees;
+  let totalPctDifference = totalFeeDifference/totalLinearFees;
+  let roundedPctDifference = `${Math.round((totalPctDifference + Number.EPSILON) * 100) / 100}%`
 
   const useCurrency = selectedCurrency != ""; // Returns true if currency is selected.
-  output.textContent = useCurrency
-    ? numberToCurrency(totalAllFees)
-    : totalAllFees;
+  output.textContent = useCurrency ? numberToCurrency(totalAllFees) : totalAllFees;
+  amountDifference.textContent = useCurrency ? numberToCurrency(totalFeeDifference) : totalFeeDifference;
+  percentDifference.textContent = roundedPctDifference;
 
   // Call the table component update.
   let calculatedToCurrency = [];
@@ -298,4 +308,4 @@ function toggleFormula(element) {
 // Runs when document loaded.
 setDarkMode();
 setCurrencyTo(retrieveData("selectedCurrency", ""));
-update();
+// update();

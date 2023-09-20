@@ -14,7 +14,7 @@
   --color-link-hover-text: whitesmoke;
   --color-total-revision-fees: #000000;
   --color-total-revision-fees-text: whitesmoke;
-  --color-footer: #808080;
+  --color-footer: #7b7b7b;
   --input-background: #f2f2f2;
   --input-border: #000000;
   --input-thumb: #000000;
@@ -23,6 +23,7 @@
   --interactive-hover: #f4f4f4;
   --interactive-pressed: #e2e2e2;
   --faded-fill: #e6e6e6;
+  --greentext: #04ab12;
 }
 
 body.dark-mode {
@@ -32,7 +33,7 @@ body.dark-mode {
   --color-link-hover-text: #000000;
   --color-total-revision-fees: whitesmoke;
   --color-total-revision-fees-text: #000000;
-  --color-footer: #ffffff;
+  --color-footer: #cccccc;
   --input-background: #333333;
   --input-border: #ffffff;
   --input-thumb: #ffffff;
@@ -41,6 +42,7 @@ body.dark-mode {
   --interactive-hover: #1e1e1e;
   --interactive-pressed: #2a2a2a;
   --faded-fill: #1c1c1c;
+  --greentext: #12ff23;
 }
 
 body {
@@ -268,13 +270,17 @@ select {
   display: none;
 }
 
+.totalRevisionContainer {
+  max-width: var(--max-width);
+}
+
 .totalRevisionFees {
   max-width: var(--max-width);
   color: var(--color-total-revision-fees-text);
   background-color: var(--color-total-revision-fees);
   padding: 0.75rem;
-  margin-bottom: 1rem;
-  border-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -290,8 +296,29 @@ select {
   font-size: x-large;
 }
 
+.feeDifference {
+  max-width: var(--max-width);
+  padding: 0.75rem;
+  font-size: 0.7rem;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  background-color: var(--notice-background);
+}
+
+.differenceLabel {
+  font-size: 0.7rem; 
+  transition: all 1s ease-in-out;
+}
+
+.totalFeeDifference {
+  color: var(--greentext);
+}
+
 .downloadButton {
-  /* border: 1px solid blue; */
   max-width: var(--max-width);
   margin-top: -1.5rem;
   font-size: x-small;
@@ -300,15 +327,15 @@ select {
   display: flex;
   justify-content: end;
   gap: 0.3rem;
+  /* border: 1px solid blue; */
 }
+
 
 .downloadButtonInteract {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
   cursor: pointer;
-}
-
-.downloadButton img {
-  width: 0.8rem;
-  height: auto;
 }
 
 .footerContainer {
@@ -354,6 +381,10 @@ select {
 
   .totalRevisionFees {
     font-size: 0.8rem;
+  }
+
+  .differenceLabel {
+    font-size: 0.8rem; 
   }
   
   .footerLeft {
