@@ -82,7 +82,7 @@ function trigger() {
   let totalAllFees = Number(calculated.total);
   let totalLinearFees = Number(linearCalculated.total);
   let totalFeeDifference = totalAllFees - totalLinearFees;
-  let totalPctDifference = totalFeeDifference/totalLinearFees;
+  let totalPctDifference = totalFeeDifference/totalLinearFees*100;
   let roundedPctDifference = `${Math.round((totalPctDifference + Number.EPSILON) * 100) / 100}%`
 
   const useCurrency = selectedCurrency != ""; // Returns true if currency is selected.
